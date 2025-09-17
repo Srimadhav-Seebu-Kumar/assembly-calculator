@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assembly Calculator - x86-64 Assembly Language Calculator</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #24292f;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #d0d7de;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        h1 {
+            color: #0969da;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #656d76;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        .badges {
+            margin: 15px 0;
+        }
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            font-size: 0.875em;
+            margin: 2px;
+            color: #24292f;
+        }
+        .section {
+            margin: 30px 0;
+        }
+        h2 {
+            color: #1f2328;
+            border-bottom: 1px solid #d8dee4;
+            padding-bottom: 8px;
+        }
+        .code-block {
+            background-color: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 16px;
+            margin: 15px 0;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.875em;
+            overflow-x: auto;
+        }
+        .command {
+            background-color: #1f2328;
+            color: #f0f6fc;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.875em;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .card {
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 20px;
+            background-color: #f6f8fa;
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #0969da;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .links {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #0969da;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            margin: 5px;
+            font-weight: 500;
+        }
+        .btn:hover {
+            background-color: #0550ae;
+        }
+        .btn-secondary {
+            background-color: #f6f8fa;
+            color: #24292f;
+            border: 1px solid #d0d7de;
+        }
+        .btn-secondary:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🧮 Assembly Calculator</h1>
+        <p class="subtitle">A simple calculator program written in x86-64 assembly language</p>
+        <div class="badges">
+            <span class="badge">x86-64 Assembly</span>
+            <span class="badge">Linux</span>
+            <span class="badge">NASM</span>
+            <span class="badge">Educational</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📋 Overview</h2>
+        <p>This project demonstrates a basic calculator implementation in x86-64 assembly language that supports arithmetic operations on integers. It serves as an educational example for learning low-level programming concepts, system calls, and assembly language fundamentals.</p>
+    </div>
+
+    <div class="section">
+        <h2>✨ Features</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Basic Operations</h3>
+                <ul>
+                    <li>Addition (+)</li>
+                    <li>Subtraction (-)</li>
+                    <li>Multiplication (*)</li>
+                    <li>Division (/) with zero-division handling</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>User Experience</h3>
+                <ul>
+                    <li>Interactive command-line interface</li>
+                    <li>Negative number support</li>
+                    <li>Error handling and validation</li>
+                    <li>Continuous operation mode</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🚀 Quick Start</h2>
+        
+        <h3>Prerequisites</h3>
+        <ul>
+            <li>Linux x86-64 system</li>
+            <li>NASM (Netwide Assembler)</li>
+            <li>GNU ld (linker)</li>
+        </ul>
+
+        <h3>Installation</h3>
+        <div class="code-block">
+# Clone the repository
+git clone https://github.com/Srimadhav-Seebu-Kumar/assembly-calculator.git
+cd assembly-calculator
+
+# Install NASM (Ubuntu/Debian)
+sudo apt-get install nasm
+
+# Or on CentOS/RHEL/Fedora
+sudo yum install nasm
+# or
+sudo dnf install nasm
+        </div>
+
+        <h3>Building and Running</h3>
+        <div class="code-block">
+# Method 1: Step by step
+nasm -f elf64 calculator.asm -o calculator.o
+ld calculator.o -o calculator
+./calculator
+
+# Method 2: One-line command
+nasm -f elf64 calculator.asm -o calculator.o && ld calculator.o -o calculator && ./calculator
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>💻 Usage Example</h2>
+        <div class="code-block">
+Simple Assembly Calculator
+Operations: +, -, *, /
+Enter first number: 15
+Enter operation (+, -, *, /): *
+Enter second number: 4
+Result: 60
+Continue? (y/n): y
+
+Enter first number: 20
+Enter operation (+, -, *, /): /
+Enter second number: 3
+Result: 6
+Continue? (y/n): n
+Goodbye!
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🛠 Technical Details</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Architecture</h3>
+                <ul>
+                    <li>Target: x86-64 Linux systems</li>
+                    <li>Assembler: NASM (Netwide Assembler)</li>
+                    <li>System calls for I/O operations</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Key Components</h3>
+                <ul>
+                    <li><span class="command">read_number</span>: String to integer conversion</li>
+                    <li><span class="command">read_operation</span>: Operation input handling</li>
+                    <li><span class="command">calculate</span>: Arithmetic operations</li>
+                    <li><span class="command">print_number</span>: Integer to string conversion</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📚 Educational Value</h2>
+        <p>This calculator serves as an excellent learning resource for:</p>
+        <ul>
+            <li>x86-64 assembly programming fundamentals</li>
+            <li>Linux system call usage</li>
+            <li>String manipulation in assembly</li>
+            <li>Number conversion algorithms</li>
+            <li>Error handling in low-level programming</li>
+            <li>Memory management and data structures</li>
+        </ul>
+    </div>
+
+    <div class="links">
+        <a href="https://github.com/Srimadhav-Seebu-Kumar/assembly-calculator" class="btn">View on GitHub</a>
+        <a href="https://github.com/Srimadhav-Seebu-Kumar/assembly-calculator/blob/main/calculator.asm" class="btn btn-secondary">View Source Code</a>
+        <a href="https://github.com/Srimadhav-Seebu-Kumar/assembly-calculator#readme" class="btn btn-secondary">Read Documentation</a>
+    </div>
+
+    <div class="section">
+        <h2>🤝 Contributing</h2>
+        <p>Contributions are welcome! Feel free to:</p>
+        <ul>
+            <li>Report bugs or issues</li>
+            <li>Suggest new features or improvements</li>
+            <li>Submit pull requests</li>
+            <li>Improve documentation</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📄 License</h2>
+        <p>This project is open source and available for educational use. Feel free to use, modify, and distribute as needed.</p>
+    </div>
+</body>
+</html>
